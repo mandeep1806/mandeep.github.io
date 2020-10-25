@@ -24,9 +24,44 @@
 
 
 	</style>
-<style>
+	<script type="text/javascript">
+		
+		function ValidateEmail()
+			{	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				var eml=document.forms["myForm"]["email"].value;
+				if(eml.match(mailformat))
+				{	return true;
+				}
+				else
+				{	alert("You have entered an invalid email address!");
+					return false;
+				}
+			}
 
-</style>
+		function ValidatePassword()
+			{	var password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;  // to check text contains float number
+				var pass=document.forms["myForm"]["password"].value;
+				if(pass.match(password))  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid password. Password must contain one Capital letter,one small letter and number and beetwen 8 to 20 characters");  
+					return false;  
+				}  
+			}
+
+		function validateForm()
+			{	
+					if(ValidateEmail())
+					{		if(ValidatePassword())
+									{	return true;
+									}else return false;
+						
+					}else return false;	
+						
+			}
+	</script>
+
 	</head>
 		
 	<body>
@@ -52,19 +87,19 @@
 		<!-- header section end	 -->
 		
 
-		<form><center>
+		<form name="myForm" action="#" onsubmit="return validateForm()" method="post"><center>
 		<table border="1" cellpadding="5" align="center">
 			<caption class="heading"><h2><u>Login</caption>
 					
 			<tr>
 				<th>Email</th>
-				<td><input type="email" placeholder="eg.xyz@gmail.com" required="" name="email"></td>
+				<td><input type="text" placeholder="eg.xyz@gmail.com" id="email" name="email"></td>
 			</tr>
 			
 			
 			<tr>
 				<th>Password</th>
-				<td><input type="password" required="" minlength="8" name="password">(minimum 8 characters)</td>
+				<td><input type="password" id="password" name="password">(minimum 8 characters)</td>
 			</tr>
 			
 			<tr>

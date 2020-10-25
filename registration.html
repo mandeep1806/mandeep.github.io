@@ -24,6 +24,118 @@
 
 
 	</style>
+	<script>
+			function FullName()
+			{
+				var name = /^[a-zA-Z]+$/;  // to check text contains only alphabets and atleast 3 characters
+				//var nm= document.forms["myForm"]["name"].value;
+				var nm= document.getElementById("fname").value;
+				if(nm.match(name) && nm.length>=3 && nm.length<=10)  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid name");  
+					return false;  
+				}  
+			}
+
+			function ValidateEmail()
+			{	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				var eml=document.forms["myForm"]["email"].value;
+				if(eml.match(mailformat))
+				{	return true;
+				}
+				else
+				{	alert("You have entered an invalid email address!");
+					return false;
+				}
+			}
+
+			function validNumber()
+			{
+				var number = /^((0091)|(\+91)|0?)[789]{1}\d{9}$/; // to check text contains valid phone number 
+				var no=document.forms["myForm"]["contact"].value;
+				if(no.match(number) && no.length==10)  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid Mobile Number");  
+					return false;  
+				}  
+			}
+
+			function CheckCity()
+			{
+				var name = /^[a-zA-Z]+$/;  // to check text contains only alphabets and atleast 3 characters
+				//var nm= document.forms["myForm"]["name"].value;
+				var nm= document.getElementById("city").value;
+				if(nm.match(name) && nm.length>=3 && nm.length<=10)  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid City");  
+					return false;  
+				}  
+			}
+
+			function CheckState()
+			{
+				var name = /^[a-zA-Z]+$/;  // to check text contains only alphabets and atleast 3 characters
+				//var nm= document.forms["myForm"]["name"].value;
+				var nm= document.getElementById("state").value;
+				if(nm.match(name) && nm.length>=3 && nm.length<=10)  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid State");  
+					return false;  
+				}  
+			}
+
+			/*function alphanumeric()
+			{
+				var address = /^[0-9a-zA-Z ]+$/;  // to check text contains only alphabets, number and space
+				var add=document.forms["myForm"]["address"].value;
+				if(add.match(address))  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid address");  
+					return false;  
+				}  
+			}
+			*/
+		
+			function ValidatePassword()
+			{	var password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;  // to check text contains float number
+				var pass=document.forms["myForm"]["password"].value;
+				if(pass.match(password))  
+				{	return true;  
+				}  
+				else  
+				{   alert("Not a valid password. Password must contain one Capital letter,one small letter and number and beetwen 8 to 20 characters");  
+					return false;  
+				}  
+			}
+			
+			function validateForm()
+			{	
+				if(FullName())
+				{	if(ValidateEmail())
+					{	if(validNumber())
+						{	if(CheckCity())
+							{	if(CheckState())
+								{	if(ValidatePassword())
+									{	return true;
+									}else return false;
+								}else {	return false;}
+								return true;
+							}else return false;
+						}else return false;
+					}else return false;	
+				}else return false;		
+			}
+		</script>
 <style>
 
 </style>
@@ -52,21 +164,21 @@
 		<!-- header section end	 -->
 		
 
-		<form><center>
+		<form name="myForm" action="#" onsubmit="return validateForm()" method="post"><center>
 		<table border="1" cellpadding="5" align="center">
 			<caption class="heading"><h2><u>Register Here</caption>
 			<tr>
 				<th>Full Name <span style="color: red">*</span></th>
-				<td><input type="text" required="" placeholder="Enter Your Name" pattern="[a-zA-Z\s]+" title="Enter Only Characters" name="fname"></td>
+				<td><input type="text"  placeholder="Enter Your Name" title="Enter Only Characters" name="fname" id="fname"></td>
 			</tr>
 				
 			<tr>
 				<th>Your Picture <span style="color: red">*</span></th>
-				<td><input type="file" required=""  name="profile_pic"></td>
+				<td><input type="file" required="" id="profile_pic"  name="profile_pic"></td>
 			</tr>		
 			<tr>
 				<th>Email <span style="color: red">*</span></th>
-				<td><input type="email" placeholder="eg.xyz@gmail.com" required="" name="email"></td>
+				<td><input type="text" placeholder="eg.xyz@gmail.com" id="email"  name="email"></td>
 			</tr>
 			
 			<tr>
@@ -76,7 +188,7 @@
 			
 			<tr>
 				<th>Mobile No <span style="color: red">*</span></th>
-				<td><input type="number" placeholder="Enter Mobile No." pattern="[6-9]{1}[0-9]{9}" title="Enter Atlist 10 Digits Number and Mobile number Start with 6-9 and remaing 9 digit with 0-9" name="contact" required=""></td>
+				<td><input type="text" placeholder="Enter Mobile No." id="contact"  name="contact"></td>
 			</tr>
 			<tr>
 				<th>D.O.B <span style="color: red">*</span></th>
@@ -84,19 +196,19 @@
 			</tr>
 			<tr>
 				<th>City <span style="color: red">*</span></th>
-				<td><input type="text" name="city" required="" ></td>
+				<td><input type="text" name="city" id="city"  ></td>
 			</tr>
 			<tr>
 				<th>State <span style="color: red">*</span></th>
-				<td><input type="text" name="state" required=""></td>
+				<td><input type="text" id="state" name="state" ></td>
 			</tr>
 			<tr>
 				<th>Address <span style="color: red">*</span></th>
-				<td><textarea rows="3" required=""></textarea></td>
+				<td><textarea rows="3" required="" ></textarea></td>
 			</tr>
 			<tr>
 				<th>Password <span style="color: red">*</span></th>
-				<td><input type="password" required="" minlength="8" name="password" title="minimum 8 characters"></td>
+				<td><input type="password" id="password" name="password" title="minimum 8 characters"></td>
 			</tr>
 			
 			<tr>
